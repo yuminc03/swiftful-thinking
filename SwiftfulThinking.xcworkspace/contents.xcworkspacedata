@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftfulThinkingContinuedLearning/SwiftfulThinkingContinuedLearning.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftuiThinkingBootcamp/SwiftuiThinkingBootcamp.xcodeproj">
    </FileRef>
    <FileRef
