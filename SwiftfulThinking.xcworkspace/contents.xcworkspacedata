@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftfulCrypto/SwiftfulCrypto.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftfulMapApp/SwiftfulMapApp.xcodeproj">
    </FileRef>
    <FileRef
