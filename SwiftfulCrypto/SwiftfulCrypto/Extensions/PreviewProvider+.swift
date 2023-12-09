@@ -9,6 +9,7 @@ extension PreviewProvider {
 
 class DeveloperPreview {
   static let shared = DeveloperPreview()
+  let homeVM = HomeVM()
   let coin = CoinModel(
     id: "ethereum",
     symbol: "eth",
