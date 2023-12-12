@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D03ADCE2B288D6500051661 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03ADCD2B288D6500051661 /* NetworkingManager.swift */; };
 		8D0F6C582B13634400013CF7 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F6C572B13634400013CF7 /* Color+.swift */; };
 		8D0F6C5E2B1363F300013CF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F6C5D2B1363F300013CF7 /* HomeView.swift */; };
 		8D0F6C612B13710600013CF7 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F6C602B13710600013CF7 /* CircleButtonView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D03ADCD2B288D6500051661 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		8D0F6C572B13634400013CF7 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		8D0F6C5D2B1363F300013CF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D0F6C602B13710600013CF7 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D03ADCC2B288D4A00051661 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8D03ADCD2B288D6500051661 /* NetworkingManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		8D0F6C562B13634400013CF7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 			children = (
 				8DFE1F072B136306004BB0FB /* SwiftfulCryptoApp.swift */,
 				8DFE1F092B136306004BB0FB /* ContentView.swift */,
+				8D03ADCC2B288D4A00051661 /* Utilities */,
 				8D44C0B92B24795C00775B65 /* Services */,
 				8D9F95002B1C3EFD000123DC /* Models */,
 				8D0F6C562B13634400013CF7 /* Extensions */,
@@ -359,6 +370,7 @@
 				8D0F6C582B13634400013CF7 /* Color+.swift in Sources */,
 				8D9F95082B1C8EC0000123DC /* Double+.swift in Sources */,
 				8D0F6C612B13710600013CF7 /* CircleButtonView.swift in Sources */,
+				8D03ADCE2B288D6500051661 /* NetworkingManager.swift in Sources */,
 				8DFE1F082B136306004BB0FB /* SwiftfulCryptoApp.swift in Sources */,
 				8D9F95062B1C73A7000123DC /* PreviewProvider+.swift in Sources */,
 				8D0F6C642B13750100013CF7 /* CircleButtonAnimationView.swift in Sources */,
