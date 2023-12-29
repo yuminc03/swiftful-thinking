@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-  
   @EnvironmentObject private var vm: HomeVM
   @State private var showPortfolio = false
   
