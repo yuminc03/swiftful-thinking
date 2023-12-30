@@ -11,6 +11,7 @@ import Combine
 class HomeVM: ObservableObject {
   @Published var allCoins = [CoinModel]()
   @Published var portfolioCoins = [CoinModel]()
+  @Published var searchText = ""
   
   private let dataService = CoinDataService()
   private var cancelBag = Set<AnyCancellable>()
