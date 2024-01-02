@@ -26,5 +26,25 @@ class HomeVM: ObservableObject {
         self?.allCoins = returnedCoins
       }
       .store(in: &cancelBag)
+    
+    // updates allCoins
+    $searchText
+      .combineLatest(dataService.$allCoins)
+      .map(filterCoins)
+      .sink { [weak self] coins in
+        self?.allCoins = coins
+      }
+      .store(in: &cancelBag)
+  }
+  
+  private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
+    guard text.isEmpty == false else { return coins }
+    
+    let lowercasedText = text.lowercased()
+    return coins.filter { coin -> Bool in
+      return coin.name.lowercased().contains(lowercasedText)
+      || coin.symbol.lowercased().contains(lowercasedText)
+      || coin.id.lowercased().contains(lowercasedText)
+    }
   }
 }
