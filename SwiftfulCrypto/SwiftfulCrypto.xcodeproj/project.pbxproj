@@ -31,6 +31,7 @@
 		8DFE1F232B136307004BB0FB /* SwiftfulCryptoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F222B136307004BB0FB /* SwiftfulCryptoUITests.swift */; };
 		8DFE1F252B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */; };
 		8DFE1F5A2B45877D00FE7E23 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */; };
+		8DFE1F5E2B4588E500FE7E23 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F5D2B4588E500FE7E23 /* StatisticView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		8DFE1F222B136307004BB0FB /* SwiftfulCryptoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoUITests.swift; sourceTree = "<group>"; };
 		8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
+		8DFE1F5D2B4588E500FE7E23 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				8D8240492B33311E00ED4A46 /* CoinImage */,
 				8D82404E2B33322500ED4A46 /* CircleButton */,
 				8DA982DF2B3FD83D00EDD425 /* SearchBarView.swift */,
+				8DFE1F5D2B4588E500FE7E23 /* StatisticView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DFE1F5A2B45877D00FE7E23 /* StatisticModel.swift in Sources */,
+				8DFE1F5E2B4588E500FE7E23 /* StatisticView.swift in Sources */,
 				8DA982E22B3FDD3D00EDD425 /* UIApplication+.swift in Sources */,
 				8D9F95042B1C733E000123DC /* CoinRowView.swift in Sources */,
 				8D44C0B82B23539F00775B65 /* HomeVM.swift in Sources */,
