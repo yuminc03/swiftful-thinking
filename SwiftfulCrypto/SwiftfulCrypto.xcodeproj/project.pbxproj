@@ -30,6 +30,7 @@
 		8DFE1F192B136307004BB0FB /* SwiftfulCryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F182B136307004BB0FB /* SwiftfulCryptoTests.swift */; };
 		8DFE1F232B136307004BB0FB /* SwiftfulCryptoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F222B136307004BB0FB /* SwiftfulCryptoUITests.swift */; };
 		8DFE1F252B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */; };
+		8DFE1F5A2B45877D00FE7E23 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		8DFE1F1E2B136307004BB0FB /* SwiftfulCryptoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftfulCryptoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFE1F222B136307004BB0FB /* SwiftfulCryptoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoUITests.swift; sourceTree = "<group>"; };
 		8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				8D9F95012B1C3F20000123DC /* CoinModel.swift */,
+				8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFE1F5A2B45877D00FE7E23 /* StatisticModel.swift in Sources */,
 				8DA982E22B3FDD3D00EDD425 /* UIApplication+.swift in Sources */,
 				8D9F95042B1C733E000123DC /* CoinRowView.swift in Sources */,
 				8D44C0B82B23539F00775B65 /* HomeVM.swift in Sources */,
