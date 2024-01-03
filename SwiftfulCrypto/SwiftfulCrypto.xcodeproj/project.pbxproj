@@ -32,6 +32,7 @@
 		8DFE1F252B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */; };
 		8DFE1F5A2B45877D00FE7E23 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */; };
 		8DFE1F5E2B4588E500FE7E23 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F5D2B4588E500FE7E23 /* StatisticView.swift */; };
+		8DFE1F602B4596DE00FE7E23 /* HomeStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE1F5F2B4596DE00FE7E23 /* HomeStatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		8DFE1F242B136307004BB0FB /* SwiftfulCryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8DFE1F592B45877D00FE7E23 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 		8DFE1F5D2B4588E500FE7E23 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		8DFE1F5F2B4596DE00FE7E23 /* HomeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				8D0F6C5D2B1363F300013CF7 /* HomeView.swift */,
 				8D9F95032B1C733E000123DC /* CoinRowView.swift */,
+				8DFE1F5F2B4596DE00FE7E23 /* HomeStatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				8D82404D2B33315200ED4A46 /* CoinImageView.swift in Sources */,
 				8D0F6C582B13634400013CF7 /* Color+.swift in Sources */,
 				8D9F95082B1C8EC0000123DC /* Double+.swift in Sources */,
+				8DFE1F602B4596DE00FE7E23 /* HomeStatsView.swift in Sources */,
 				8D0F6C612B13710600013CF7 /* CircleButtonView.swift in Sources */,
 				8D03ADCE2B288D6500051661 /* NetworkingManager.swift in Sources */,
 				8DFE1F082B136306004BB0FB /* SwiftfulCryptoApp.swift in Sources */,
