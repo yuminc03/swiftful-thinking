@@ -9,13 +9,19 @@ import SwiftUI
 
 struct HomeView: View {
   @EnvironmentObject private var vm: HomeVM
+  /// True - 오른쪽으로 애니메이션
   @State private var showPortfolio = false
+  /// True - 새로운 sheet 보여주기
+  @State private var showPortfolioView = false
   
   var body: some View {
     ZStack {
       // background layer
       Color.theme.background
         .ignoresSafeArea()
+        .sheet(isPresented: $showPortfolioView) {
+          PortfolioView()
+        }
       
       // content layer
       VStack {
@@ -51,6 +57,11 @@ extension HomeView {
     HStack {
       CircleButtonView(iconName: showPortfolio ? "plus" : "info")
         .animation(.none, value: showPortfolio)
+        .onTapGesture {
+          if showPortfolio {
+            showPortfolioView.toggle()
+          }
+        }
         .background(
           CircleButtonAnimationView(animate: $showPortfolio)
         )
