@@ -21,6 +21,7 @@ struct HomeView: View {
         .ignoresSafeArea()
         .sheet(isPresented: $showPortfolioView) {
           PortfolioView()
+            .environmentObject(vm)
         }
       
       // content layer
