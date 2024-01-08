@@ -19,28 +19,7 @@ struct PortfolioView: View {
           SearchBarView(searchText: $vm.searchText)
           coinLogoList
           if selectedCoin != nil {
-            VStack(spacing: 20) {
-              HStack {
-                Text("Current price of \(selectedCoin?.symbol.uppercased() ?? ""):")
-                Spacer()
-                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
-              }
-              Divider()
-              HStack {
-                Text("Amount is your portfolio:")
-                Spacer()
-                TextField("Ex. 1.4", text: $quantityText)
-                  .multilineTextAlignment(.trailing)
-                  .keyboardType(.decimalPad)
-              }
-              Divider()
-              HStack {
-                Text("Current value:")
-                Spacer()
-                Text("")
-              }
-            }
-            .foregroundColor(.theme.accent)
+            portfolioInputSection
           }
         }
       }
@@ -84,8 +63,43 @@ extension PortfolioView {
             )
         }
       }
-      .padding(.vertical, 4)
+      .frame(height: 120)
       .padding(.leading)
     }
+  }
+  
+  private var portfolioInputSection: some View {
+    VStack(spacing: 20) {
+      HStack {
+        Text("Current price of \(selectedCoin?.symbol.uppercased() ?? ""):")
+        Spacer()
+        Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
+      }
+      Divider()
+      HStack {
+        Text("Amount holding:")
+        Spacer()
+        TextField("Ex. 1.4", text: $quantityText)
+          .multilineTextAlignment(.trailing)
+          .keyboardType(.decimalPad)
+      }
+      Divider()
+      HStack {
+        Text("Current value:")
+        Spacer()
+        Text(getCurrentValue().asCurrencyWith6Decimals())
+      }
+    }
+    .animation(.none)
+    .padding()
+    .font(.headline)
+  }
+  
+  private func getCurrentValue() -> Double {
+    if let quantity = Double(quantityText) {
+      return quantity * (selectedCoin?.currentPrice ?? 0)
+    }
+    
+    return 0
   }
 }
