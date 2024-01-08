@@ -11,6 +11,7 @@ struct PortfolioView: View {
   @EnvironmentObject private var vm: HomeVM
   @State private var selectedCoin: CoinModel?
   @State private var quantityText = ""
+  @State private var showCheckmark = false
   
   var body: some View {
     NavigationView {
@@ -27,6 +28,9 @@ struct PortfolioView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           XMarkButton()
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+          trailingNavBarButtons
         }
       }
     }
@@ -95,11 +99,53 @@ extension PortfolioView {
     .font(.headline)
   }
   
+  private var trailingNavBarButtons: some View {
+    HStack(spacing: 10) {
+      Image(systemName: "checkmark")
+        .opacity(showCheckmark ? 1 : 0)
+      Button {
+        
+      } label: {
+        Text("Save".uppercased())
+      }
+      .opacity(
+        selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText) ? 1 : 0
+      )
+    }
+    .font(.headline)
+  }
+  
   private func getCurrentValue() -> Double {
     if let quantity = Double(quantityText) {
       return quantity * (selectedCoin?.currentPrice ?? 0)
     }
     
     return 0
+  }
+  
+  private func didTapSaveButton() {
+    guard let selectedCoin else { return }
+    
+    // save to portfolio
+    
+    // show checkmark
+    withAnimation(.easeIn) {
+      showCheckmark = true
+    }
+    
+    // hide keyboard
+    UIApplication.shared.endEditing()
+    
+    // hide checkmark
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+      withAnimation(.easeOut) {
+        showCheckmark = false
+      }
+    }
+  }
+  
+  private func removeSelectedCoin() {
+    selectedCoin = nil
+    vm.searchText = ""
   }
 }
