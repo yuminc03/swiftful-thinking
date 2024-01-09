@@ -33,6 +33,9 @@ struct PortfolioView: View {
           trailingNavBarButtons
         }
       }
+      .onChange(of: vm.searchText) { value in
+        if value == "" { removeSelectedCoin() }
+      }
     }
   }
 }
@@ -104,12 +107,12 @@ extension PortfolioView {
       Image(systemName: "checkmark")
         .opacity(showCheckmark ? 1 : 0)
       Button {
-        
+        didTapSaveButton()
       } label: {
         Text("Save".uppercased())
       }
       .opacity(
-        selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText) ? 1 : 0
+        (selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)) ? 1 : 0
       )
     }
     .font(.headline)
