@@ -57,7 +57,7 @@ extension PortfolioView {
             .padding(4)
             .onTapGesture {
               withAnimation(.easeIn) {
-                selectedCoin = coin
+                updateSelectedCoin(coin: coin)
               }
             }
             .background(
@@ -73,6 +73,13 @@ extension PortfolioView {
       .frame(height: 120)
       .padding(.leading)
     }
+  }
+  
+  private func updateSelectedCoin(coin: CoinModel) {
+    selectedCoin = coin
+    
+    let portfolioCoin = vm.portfolioCoins.first { $0.id == coin.id }
+    
   }
   
   private var portfolioInputSection: some View {
@@ -127,13 +134,18 @@ extension PortfolioView {
   }
   
   private func didTapSaveButton() {
-    guard let selectedCoin else { return }
+    guard 
+      let selectedCoin,
+      let amount = Double(quantityText)
+    else { return }
     
     // save to portfolio
+    vm.updatePortfolio(coin: selectedCoin, amount: amount)
     
     // show checkmark
     withAnimation(.easeIn) {
       showCheckmark = true
+      removeSelectedCoin()
     }
     
     // hide keyboard

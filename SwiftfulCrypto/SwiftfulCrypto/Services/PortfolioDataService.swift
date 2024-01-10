@@ -14,15 +14,32 @@ final class PortfolioDataService {
   private let entityName = "PortfolioEntity"
   @Published var savedEntities = [PortfolioEntity]()
   
-  
   init() {
     self.container = NSPersistentContainer(name: containerName)
     self.container.loadPersistentStores { _, error in
       if let error {
         print("Error loading Core Data: \(error)")
       }
+      self.getPortfolio()
     }
   }
+  
+  // MARK: PUBLIC
+  
+  func updatePortfolio(coin: CoinModel, amount: Double) {
+    // coin이 이미 portfolio에 있는 지 확인
+    if let entity = savedEntities.first(where: { $0.coinID == coin.id }) {
+      if amount > 0 {
+        update(entity: entity, amount: amount)
+      } else {
+        delete(entity: entity)
+      }
+    } else {
+      add(coin: coin, amount: amount)
+    }
+  }
+  
+  // MARK: PRIVATE
   
   private func getPortfolio() {
     let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
@@ -37,6 +54,17 @@ final class PortfolioDataService {
     let entity = PortfolioEntity(context: container.viewContext)
     entity.coinID = coin.id
     entity.amount = amount
+    applyChanges()
+  }
+    
+  private func update(entity: PortfolioEntity, amount: Double) {
+    entity.amount = amount
+    applyChanges()
+  }
+  
+  private func delete(entity: PortfolioEntity) {
+    container.viewContext.delete(entity)
+    applyChanges()
   }
   
   private func save() {
@@ -45,5 +73,10 @@ final class PortfolioDataService {
     } catch {
       print("Error saving to Care Data: \(error)")
     }
+  }
+  
+  private func applyChanges() {
+    save()
+    getPortfolio()
   }
 }
