@@ -32,19 +32,10 @@ class HomeVM: ObservableObject {
   func addSubscriber() {
     // update marketData
     marketDataService.$marketData
+      .combineLatest($portfolioCoins)
       .map(mapGlobalMarketData)
       .sink { [weak self] stats in
         self?.statistics = stats
-      }
-      .store(in: &cancelBag)
-    
-    // updates allCoins
-    $searchText
-      .combineLatest(coinDataService.$allCoins)
-      .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-      .map(filterCoins)
-      .sink { [weak self] coins in
-        self?.allCoins = coins
       }
       .store(in: &cancelBag)
     
@@ -64,6 +55,16 @@ class HomeVM: ObservableObject {
         self?.portfolioCoins = coins
       }
       .store(in: &cancelBag)
+    
+    // updates allCoins
+    $searchText
+      .combineLatest(coinDataService.$allCoins)
+      .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+      .map(filterCoins)
+      .sink { [weak self] coins in
+        self?.allCoins = coins
+      }
+      .store(in: &cancelBag)
   }
   
   func updatePortfolio(coin: CoinModel, amount: Double) {
@@ -81,7 +82,7 @@ class HomeVM: ObservableObject {
     }
   }
   
-  private func mapGlobalMarketData(data: MarketDataModel?) -> [StatisticModel] {
+  private func mapGlobalMarketData(data: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
     var stats = [StatisticModel]()
     guard let data else { return stats }
     
@@ -92,7 +93,22 @@ class HomeVM: ObservableObject {
     )
     let volume = StatisticModel(title: "24h Volume", value: data.volume)
     let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominance)
-    let portfolio = StatisticModel(title: "Portfolio Value", value: "$0.00", percentageChange: 0)
+    let portfolioValue = portfolioCoins.map { $0.currentHoldingsValue }.reduce(0, +)
+    let previousValue = portfolioCoins
+      .map { coin -> Double in
+        let currentValue = coin.currentHoldingsValue
+        let percentChange = coin.priceChangePercentage24H ?? 0 / 100
+        let previousValue = currentValue / (1 + percentChange)
+        return previousValue
+        // 25% -> 25 -> 0.25
+      }
+      .reduce(0, +)
+    
+    let portfolio = StatisticModel(
+      title: "Portfolio Value",
+      value: portfolioValue.asCurrencyWith6Decimals(),
+      percentageChange: 0
+    )
     stats.append(contentsOf: [
       marketCap,
       volume,
