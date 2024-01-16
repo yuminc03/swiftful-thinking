@@ -13,6 +13,8 @@ struct HomeView: View {
   @State private var showPortfolio = false
   /// True - 새로운 sheet 보여주기
   @State private var showPortfolioView = false
+  @State private var selectedCoin: CoinModel?
+  @State private var showDetailView = false
   
   var body: some View {
     ZStack {
@@ -40,6 +42,13 @@ struct HomeView: View {
         Spacer(minLength: 0)
       }
     }
+    .background(
+      NavigationLink(
+        destination: DetailLoadingView(coin: $selectedCoin),
+        isActive: $showDetailView,
+        label: { EmptyView() }
+      )
+    )
   }
 }
 
@@ -90,6 +99,9 @@ extension HomeView {
           .listRowInsets(
             .init(top: 10, leading: 0, bottom: 10, trailing: 0)
           )
+          .onTapGesture {
+            segue(coin: coin)
+          }
       }
     }
     .listStyle(.plain)
@@ -102,9 +114,17 @@ extension HomeView {
           .listRowInsets(
             .init(top: 10, leading: 0, bottom: 10, trailing: 0)
           )
+          .onTapGesture {
+            segue(coin: coin)
+          }
       }
     }
     .listStyle(.plain)
+  }
+  
+  private func segue(coin: CoinModel) {
+    selectedCoin = coin
+    showDetailView.toggle()
   }
   
   private var columnTitles: some View {

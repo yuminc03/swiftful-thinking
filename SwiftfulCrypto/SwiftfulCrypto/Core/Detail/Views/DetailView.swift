@@ -24,3 +24,19 @@ struct DetailView_Previews: PreviewProvider {
     DetailView(coin: dev.coin)
   }
 }
+
+struct DetailLoadingView: View {
+  @Binding private var coin: CoinModel?
+  
+  init(coin: Binding<CoinModel?>) {
+    self._coin = coin
+  }
+  
+  var body: some View {
+    ZStack {
+      if let coin {
+        DetailView(coin: coin)
+      }
+    }
+  }
+}
