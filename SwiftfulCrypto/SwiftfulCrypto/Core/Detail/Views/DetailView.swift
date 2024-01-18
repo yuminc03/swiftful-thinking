@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct DetailView: View {
+  @StateObject private var vm: DetailVM
   private let coin: CoinModel
   
   init(coin: CoinModel) {
     self.coin = coin
+    self._vm = StateObject(wrappedValue: DetailVM(coin: coin))
   }
   
   var body: some View {

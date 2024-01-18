@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class DetailVM {
+final class DetailVM: ObservableObject {
   private let coinDetailService: CoinDetailDataService
   private var cancelBag = Set<AnyCancellable>()
   
