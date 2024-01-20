@@ -9,21 +9,56 @@ import SwiftUI
 
 struct DetailView: View {
   @StateObject private var vm: DetailVM
-  private let coin: CoinModel
+  private let columns = [
+    GridItem(.flexible()),
+    GridItem(.flexible())
+  ]
+  private let spacing: CGFloat = 30
   
   init(coin: CoinModel) {
-    self.coin = coin
     self._vm = StateObject(wrappedValue: DetailVM(coin: coin))
   }
   
   var body: some View {
-    Text(coin.name)
+    ScrollView {
+      VStack(spacing: 20) {
+        Text("test")
+          .frame(height: 150)
+        
+        Text("Overview")
+          .font(.title)
+          .bold()
+          .foregroundColor(.theme.accent)
+          .frame(maxWidth: .infinity, alignment: .leading)
+        Divider()
+        LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
+          ForEach(0 ..< 6) { _ in
+            StatisticView(stat: .init(title: "Title", value: "Value"))
+          }
+        }
+        
+        Text("Additional Details")
+          .font(.title)
+          .bold()
+          .foregroundColor(.theme.accent)
+          .frame(maxWidth: .infinity, alignment: .leading)
+        Divider()
+        LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
+          ForEach(0 ..< 6) { _ in
+            StatisticView(stat: .init(title: "Title", value: "Value"))
+          }
+        }
+      }
+    }
+    .navigationTitle(vm.coin.name)
   }
 }
 
 struct DetailView_Previews: PreviewProvider {
   static var previews: some View {
-    DetailView(coin: dev.coin)
+    NavigationView {
+      DetailView(coin: dev.coin)
+    }
   }
 }
 
