@@ -33,6 +33,11 @@ struct DetailView: View {
       }
     }
     .navigationTitle(vm.coin.name)
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        navigationBarTrailingItems
+      }
+    }
   }
 }
 
@@ -61,6 +66,16 @@ struct DetailLoadingView: View {
 }
 
 extension DetailView {
+  private var navigationBarTrailingItems: some View {
+    HStack {
+      Text(vm.coin.symbol.uppercased())
+        .font(.headline)
+        .foregroundColor(.theme.secondaryText)
+      CoinImageView(coin: vm.coin)
+        .frame(width: 25, height: 25)
+    }
+  }
+  
   private var overviewTitleText: some View {
     Text("Overview")
       .font(.title)
