@@ -15,6 +15,9 @@ final class DetailVM: ObservableObject {
   @Published var overviewStatistics = [StatisticModel]()
   @Published var additionalStatistics = [StatisticModel]()
   @Published var coin: CoinModel
+  @Published var coinDescription: String?
+  @Published var websiteURL: String?
+  @Published var redditURL: String?
   
   init(coin: CoinModel) {
     self.coin = coin
@@ -27,9 +30,16 @@ final class DetailVM: ObservableObject {
       .combineLatest($coin)
       .map(mapDataToStatistics)
       .sink { [weak self] data in
-        print("Recieved coin detail data")
         self?.overviewStatistics = data.overview
         self?.additionalStatistics = data.additional
+      }
+      .store(in: &cancelBag)
+    
+    coinDetailService.$coinDetails
+      .sink { [weak self] coinDetails in
+        self?.coinDescription = coinDetails?.readableDescription
+        self?.websiteURL = coinDetails?.links?.homepage?.first
+        self?.redditURL = coinDetails?.links?.subredditURL
       }
       .store(in: &cancelBag)
   }
