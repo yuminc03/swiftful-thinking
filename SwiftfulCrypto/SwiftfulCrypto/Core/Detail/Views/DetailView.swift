@@ -32,8 +32,8 @@ struct DetailView: View {
           .frame(maxWidth: .infinity, alignment: .leading)
         Divider()
         LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
-          ForEach(0 ..< 6) { _ in
-            StatisticView(stat: .init(title: "Title", value: "Value"))
+          ForEach(vm.overviewStatistics) {
+            StatisticView(stat: $0)
           }
         }
         
@@ -44,8 +44,8 @@ struct DetailView: View {
           .frame(maxWidth: .infinity, alignment: .leading)
         Divider()
         LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
-          ForEach(0 ..< 6) { _ in
-            StatisticView(stat: .init(title: "Title", value: "Value"))
+          ForEach(vm.additionalStatistics) {
+            StatisticView(stat: $0)
           }
         }
       }
