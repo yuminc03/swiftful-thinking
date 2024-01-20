@@ -78,7 +78,7 @@ extension SettingsView {
         .foregroundColor(.theme.accent)
       }
       .padding(.vertical)
-      Link("Visit CoinGecko 🥳", destination: coingeckoURL)
+      Link("Visit CoinGecko 🦎", destination: coingeckoURL)
     } header: {
       Text("CoinGecko")
     }
@@ -99,7 +99,7 @@ extension SettingsView {
         .foregroundColor(.theme.accent)
       }
       .padding(.vertical)
-      Link("Visit Website 🥳", destination: personalURL)
+      Link("Visit Website 🤙", destination: personalURL)
     } header: {
       Text("Developer")
     }
