@@ -13,6 +13,8 @@ struct HomeView: View {
   @State private var showPortfolio = false
   /// True - 새로운 sheet 보여주기
   @State private var showPortfolioView = false
+  /// True - 새로운 sheet 보여주기
+  @State private var showSettingsView = false
   @State private var selectedCoin: CoinModel?
   @State private var showDetailView = false
   
@@ -40,6 +42,9 @@ struct HomeView: View {
             .transition(.move(edge: .trailing))
         }
         Spacer(minLength: 0)
+      }
+      .sheet(isPresented: $showSettingsView) {
+        SettingsView()
       }
     }
     .background(
@@ -70,6 +75,8 @@ extension HomeView {
         .onTapGesture {
           if showPortfolio {
             showPortfolioView.toggle()
+          } else {
+            showSettingsView.toggle()
           }
         }
         .background(
