@@ -24,30 +24,12 @@ struct DetailView: View {
       VStack(spacing: 20) {
         Text("test")
           .frame(height: 150)
-        
-        Text("Overview")
-          .font(.title)
-          .bold()
-          .foregroundColor(.theme.accent)
-          .frame(maxWidth: .infinity, alignment: .leading)
+        overviewTitleText
         Divider()
-        LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
-          ForEach(vm.overviewStatistics) {
-            StatisticView(stat: $0)
-          }
-        }
-        
-        Text("Additional Details")
-          .font(.title)
-          .bold()
-          .foregroundColor(.theme.accent)
-          .frame(maxWidth: .infinity, alignment: .leading)
+        overviewGrid
+        additionalTitleText
         Divider()
-        LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
-          ForEach(vm.additionalStatistics) {
-            StatisticView(stat: $0)
-          }
-        }
+        additionalGrid
       }
     }
     .navigationTitle(vm.coin.name)
@@ -73,6 +55,40 @@ struct DetailLoadingView: View {
     ZStack {
       if let coin {
         DetailView(coin: coin)
+      }
+    }
+  }
+}
+
+extension DetailView {
+  private var overviewTitleText: some View {
+    Text("Overview")
+      .font(.title)
+      .bold()
+      .foregroundColor(.theme.accent)
+      .frame(maxWidth: .infinity, alignment: .leading)
+  }
+  
+  private var overviewGrid: some View {
+    LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
+      ForEach(vm.overviewStatistics) {
+        StatisticView(stat: $0)
+      }
+    }
+  }
+  
+  private var additionalTitleText: some View {
+    Text("Additional Details")
+      .font(.title)
+      .bold()
+      .foregroundColor(.theme.accent)
+      .frame(maxWidth: .infinity, alignment: .leading)
+  }
+  
+  private var additionalGrid: some View {
+    LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
+      ForEach(vm.additionalStatistics) {
+        StatisticView(stat: $0)
       }
     }
   }
