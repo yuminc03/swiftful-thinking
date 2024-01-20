@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
   @StateObject private var vm: DetailVM
+  @State private var showFullDescription = false
   private let columns = [
     GridItem(.flexible()),
     GridItem(.flexible())
@@ -24,30 +25,10 @@ struct DetailView: View {
       VStack {
         ChartView(coin: vm.coin)
           .padding(.vertical)
-        
         VStack(spacing: 20) {
           overviewTitleText
           Divider()
-          ZStack {
-            if let coinDescription = vm.coinDescription, coinDescription.isNotEmpty {
-              VStack {
-                Text(coinDescription)
-                  .lineLimit(3)
-                  .font(.callout)
-                  .foregroundColor(.theme.secondaryText)
-                Button {
-                  
-                } label: {
-                  Text("Read more..")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .padding(.vertical, 4)
-                }
-                .tint(.blue)
-              }
-              .frame(maxWidth: .infinity, alignment: .leading)
-            }
-          }
+          descriptionSection
           overviewGrid
           additionalTitleText
           Divider()
@@ -106,6 +87,31 @@ extension DetailView {
       .bold()
       .foregroundColor(.theme.accent)
       .frame(maxWidth: .infinity, alignment: .leading)
+  }
+  
+  private var descriptionSection: some View {
+    ZStack {
+      if let coinDescription = vm.coinDescription, coinDescription.isNotEmpty {
+        VStack {
+          Text(coinDescription)
+            .lineLimit(showFullDescription ? nil : 3)
+            .font(.callout)
+            .foregroundColor(.theme.secondaryText)
+          Button {
+            withAnimation(.easeInOut) {
+              showFullDescription.toggle()
+            }
+          } label: {
+            Text(showFullDescription ?  "Less" : "Read more..")
+              .font(.caption)
+              .fontWeight(.bold)
+              .padding(.vertical, 4)
+          }
+          .tint(.blue)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+      }
+    }
   }
   
   private var overviewGrid: some View {
