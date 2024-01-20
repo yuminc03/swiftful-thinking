@@ -11,7 +11,13 @@ struct LaunchView: View {
   @State private var loadingText = "Loading your portfolio...".map { String($0) }
   @State private var showLoadingText = false
   @State private var counter = 0
+  @State private var loops = 0
+  @Binding private var showLaunchView: Bool
   let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+  
+  init(showLaunchView: Binding<Bool>) {
+    self._showLaunchView = showLaunchView
+  }
   
   var body: some View {
     ZStack {
@@ -23,7 +29,7 @@ struct LaunchView: View {
       ZStack {
         if showLoadingText {
           HStack(spacing: 0) {
-            ForEach(loadingText.indices) { index in
+            ForEach(loadingText.indices, id: \.self) { index in
               Text(loadingText[index])
                 .font(.headline)
                 .fontWeight(.heavy)
@@ -41,12 +47,21 @@ struct LaunchView: View {
     }
     .onReceive(timer) { _ in
       withAnimation(.spring()) {
-        counter += 1
+        let lastIndex = loadingText.count - 1
+        if counter == lastIndex {
+          counter = 0
+          loops += 1
+          if loops >= 2 {
+            showLaunchView = false
+          }
+        } else {
+          counter += 1
+        }
       }
     }
   }
 }
 
 #Preview {
-  LaunchView()
+  LaunchView(showLaunchView: .constant(true))
 }
