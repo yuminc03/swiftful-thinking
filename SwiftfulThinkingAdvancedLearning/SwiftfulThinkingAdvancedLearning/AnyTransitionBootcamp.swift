@@ -22,23 +22,24 @@ struct RotateViewModifier: ViewModifier {
 
 extension AnyTransition {
   static var rotating: AnyTransition {
-    return AnyTransition.modifier(
+    return modifier(
       active: RotateViewModifier(rotation: 180),
       identity: RotateViewModifier(rotation: 0)
     )
   }
   
-  static func rotating(amount: Double) -> AnyTransition {
-    return AnyTransition.modifier(
-      active: RotateViewModifier(rotation: amount),
+  static func rotating(rotation: Double) -> AnyTransition {
+    return modifier(
+      active: RotateViewModifier(rotation: rotation),
       identity: RotateViewModifier(rotation: 0)
     )
   }
   
-  static func rotateOn() -> some View {
-    VStack {
-      
-    }
+  static var rotateOn: AnyTransition {
+    return asymmetric(
+      insertion: .rotating,
+      removal: .move(edge: .leading)
+    )
   }
 }
 
@@ -52,11 +53,7 @@ struct AnyTransitionBootcamp: View {
         RoundedRectangle(cornerRadius: 25)
           .frame(width: 250, height: 350)
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .transition(.asymmetric(insertion: .identity, removal: .scale))
-//          .transition(.rotating(amount: 1000))
-//          .transition(AnyTransition.rotating.animation(.easeInOut))
-//          .transition(AnyTransition.scale.animation(.easeInOut))
-//          .transition(.move(edge: .leading))
+          .transition(.rotateOn)
       }
       Spacer()
       Text("Click Me!")
