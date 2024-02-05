@@ -12,9 +12,10 @@ struct PreferenceKeyBootcamp: View {
   
   var body: some View {
     NavigationView {
-      SecondaryScreen(text: text)
-        .navigationTitle("Navigation Title")
-        .customTitle("New Value!!!")
+      VStack {
+        SecondaryScreen(text: text)
+          .navigationTitle("Navigation Title")
+      }
     }
     .onPreferenceChange(CustomTitlePreferenceKey.self) { value in
       self.text = value
@@ -35,9 +36,19 @@ extension View {
 
 struct SecondaryScreen: View {
   let text: String
+  @State private var newValue = ""
   
   var body: some View {
     Text(text)
+      .onAppear(perform: getDataFromDatabase)
+      .customTitle(newValue)
+  }
+  
+  func getDataFromDatabase() {
+    // download
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+      self.newValue = "🫐New Value From Database🫐"
+    }
   }
 }
 
