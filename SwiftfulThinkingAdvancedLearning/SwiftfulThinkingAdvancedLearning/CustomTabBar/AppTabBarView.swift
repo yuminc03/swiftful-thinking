@@ -19,6 +19,21 @@ struct AppTabBarView: View {
   var body: some View {
     CustomTabBarContainerView(selection: $tabSelection) {
       Color.blue
+        .tabBarItem(
+          tab: .init(iconName: "house", title: "Home", color: .red), 
+          selection: $tabSelection
+        )
+      Color.red
+        .tabBarItem(
+          tab: .init(iconName: "heart", title: "Favorites", color: .blue), 
+          selection: $tabSelection
+        )
+      
+      Color.green
+        .tabBarItem(
+          tab: .init(iconName: "person", title: "Profile", color: .green), 
+          selection: $tabSelection
+        )
     }
   }
 }
