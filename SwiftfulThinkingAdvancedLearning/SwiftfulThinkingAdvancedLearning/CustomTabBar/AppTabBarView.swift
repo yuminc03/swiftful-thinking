@@ -14,26 +14,18 @@ import SwiftUI
 
 struct AppTabBarView: View {
   @State private var selection = "home"
-  @State private var tabSelection: TabBarItem = .init(iconName: "house", title: "Home", color: .red)
+  @State private var tabSelection: TabBarItem = .home
   
   var body: some View {
     CustomTabBarContainerView(selection: $tabSelection) {
       Color.blue
-        .tabBarItem(
-          tab: .init(iconName: "house", title: "Home", color: .red), 
-          selection: $tabSelection
-        )
+        .tabBarItem(tab: .home, selection: $tabSelection)
+      
       Color.red
-        .tabBarItem(
-          tab: .init(iconName: "heart", title: "Favorites", color: .blue), 
-          selection: $tabSelection
-        )
+        .tabBarItem(tab: .favorites, selection: $tabSelection)
       
       Color.green
-        .tabBarItem(
-          tab: .init(iconName: "person", title: "Profile", color: .green), 
-          selection: $tabSelection
-        )
+        .tabBarItem(tab: .profile, selection: $tabSelection)
     }
   }
 }
