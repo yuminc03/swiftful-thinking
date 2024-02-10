@@ -18,6 +18,7 @@ enum TabBarItem: Hashable {
   case home
   case favorites
   case profile
+  case message
   
   var iconName: String {
     switch self {
@@ -29,6 +30,9 @@ enum TabBarItem: Hashable {
       
     case .profile:
       return "person"
+      
+    case .message:
+      return "message"
     }
   }
   
@@ -42,6 +46,9 @@ enum TabBarItem: Hashable {
       
     case .profile:
       return "Profile"
+      
+    case .message:
+      return "Message"
     }
   }
   
@@ -55,6 +62,9 @@ enum TabBarItem: Hashable {
       
     case .profile:
       return .green
+      
+    case .message:
+      return .orange
     }
   }
 }
