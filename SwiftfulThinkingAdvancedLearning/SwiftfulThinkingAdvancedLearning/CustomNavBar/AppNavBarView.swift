@@ -13,10 +13,19 @@ struct AppNavBarView: View {
       ZStack {
         Color.gray
           .ignoresSafeArea()
-        CustomNavLink(destination: Text("Destination")) {
+        CustomNavLink {
+          Text("Destination")
+            .customNavigationTitle("Second Screen")
+            .customNavigationSubtitle("Subtitle should be showing!")
+        } label: {
           Text("Navigate")
         }
       }
+      .customNavBarItems(
+        title: "Custom Title",
+        subtitle: nil,
+        backButtonHidden: true
+      )
     }
   }
 }

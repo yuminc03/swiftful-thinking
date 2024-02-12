@@ -11,8 +11,11 @@ struct CustomNavLink<Label: View, Destination: View>: View {
   private let destination: Destination
   private let label: Label
   
-  init(destination: Destination, @ViewBuilder label: () -> Label) {
-    self.destination = destination
+  init(
+    destination: () -> Destination,
+    @ViewBuilder label: () -> Label
+  ) {
+    self.destination = destination()
     self.label = label()
   }
   
@@ -30,7 +33,9 @@ struct CustomNavLink<Label: View, Destination: View>: View {
 
 #Preview {
   CustomNavView {
-    CustomNavLink(destination: Text("Destination")) {
+    CustomNavLink {
+      Text("Destination")
+    } label: {
       Text("Click Me!")
     }
   }

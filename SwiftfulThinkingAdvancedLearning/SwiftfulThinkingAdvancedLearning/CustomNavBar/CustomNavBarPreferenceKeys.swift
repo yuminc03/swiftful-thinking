@@ -34,7 +34,7 @@ struct CustomNavBarBackButtonHiddenPreferenceKeys: PreferenceKey {
 
 extension View {
   func customNavigationTitle(_ title: String) -> some View {
-    preference(key: CustomTitlePreferenceKey.self, value: title)
+    preference(key: CustomNavBarTitlePreferenceKeys.self, value: title)
   }
   
   func customNavigationSubtitle(_ subtitle: String?) -> some View {
@@ -54,6 +54,5 @@ extension View {
       .customNavigationTitle(title)
       .customNavigationSubtitle(subtitle)
       .customNavigationBarBackButtonHidden(backButtonHidden)
-      .customNavBarItems(title: <#T##String#>, subtitle: <#T##String?#>, backButtonHidden: <#T##Bool#>)
   }
 }
