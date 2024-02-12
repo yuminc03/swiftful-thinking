@@ -11,11 +11,9 @@ struct AppNavBarView: View {
   var body: some View {
     CustomNavView {
       ZStack {
-        Color.orange
+        Color.gray
           .ignoresSafeArea()
-        NavigationLink {
-          Text("Destination")
-        } label: {
+        CustomNavLink(destination: Text("Destination")) {
           Text("Navigate")
         }
       }

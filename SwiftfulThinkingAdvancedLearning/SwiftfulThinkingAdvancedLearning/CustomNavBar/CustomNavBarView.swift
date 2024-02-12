@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomNavBarView: View {
+  @Environment(\.dismiss) var dismiss
   @State private var showBackButton = true
   @State private var title = "Title"
   @State private var subTitle: String? = "SubTitle"
@@ -46,7 +47,7 @@ struct CustomNavBarView: View {
 extension CustomNavBarView {
   private var backButton: some View {
     Button {
-      
+      dismiss()
     } label: {
       Image(systemName: "chevron.left")
     }
