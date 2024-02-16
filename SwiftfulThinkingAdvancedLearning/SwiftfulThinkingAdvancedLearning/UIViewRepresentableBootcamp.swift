@@ -20,6 +20,7 @@ struct UIViewRepresentableBootcamp: View {
           .frame(height: 55)
           .background(Color.gray)
       }
+      
       HStack {
         Text("UIKit:")
         UITextFieldViewReporesentable(
@@ -29,6 +30,14 @@ struct UIViewRepresentableBootcamp: View {
         )
         .frame(height: 55)
         .background(Color.gray)
+      }
+      
+      HStack {
+        Text("UIKit:")
+        UITextFieldViewReporesentable(text: $text)
+          .updatePlaceholder("New placeholder text")
+          .frame(height: 55)
+          .background(Color.gray)
       }
     }
   }
@@ -40,8 +49,18 @@ struct UIViewRepresentableBootcamp: View {
 
 struct UITextFieldViewReporesentable: UIViewRepresentable {
   @Binding var text: String
-  let placeholder: String
+  var placeholder: String
   let placeholderColor: UIColor
+  
+  init(
+    text: Binding<String>,
+    placeholder: String = "Default placeholder...",
+    placeholderColor: UIColor = .red
+  ) {
+    self._text = text
+    self.placeholder = placeholder
+    self.placeholderColor = placeholderColor
+  }
   
   func makeUIView(context: Context) -> UITextField {
     let v = getTextField()
@@ -62,6 +81,12 @@ struct UITextFieldViewReporesentable: UIViewRepresentable {
     )
     v.attributedPlaceholder = placeholder
     return v
+  }
+  
+  func updatePlaceholder(_ text: String) -> UITextFieldViewReporesentable {
+    var representedView = self
+    representedView.placeholder = text
+    return representedView
   }
   
   // form UIKit to SwiftUI
