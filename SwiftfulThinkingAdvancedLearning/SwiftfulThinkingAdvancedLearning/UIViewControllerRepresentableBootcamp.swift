@@ -41,3 +41,24 @@ struct BasicUIViewControllerRepresentable: UIViewControllerRepresentable {
     
   }
 }
+
+final class MyFirstVC: UIViewController {
+  
+  var labelText = "Starting Value"
+  
+  private let label: UILabel = {
+    let v = UILabel()
+    v.text = "Hello, World!"
+    v.textColor = .white
+    return v
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .systemBlue
+    view.addSubview(label)
+    
+    label.frame = view.frame
+  }
+  
+}
