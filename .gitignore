@@ -104,12 +104,6 @@ xcuserdata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+*.xcodeproj/xcuserdata/*
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,swiftpackagemanager
-
-
-CoreDataBootcamp/CoreDataBootcamp.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
-SwiftfulCrypto/SwiftfulCrypto.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
-SwiftfulMapApp/SwiftfulMapApp.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
-SwiftfulThinking.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
-SwiftfulThinkingContinuedLearning/SwiftfulThinkingContinuedLearning.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
-TodoList/TodoList.xcodeproj/xcuserdata/chuyumin.xcuserdatad/xcschemes/xcschememanagement.plist
